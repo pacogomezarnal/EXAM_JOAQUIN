@@ -1,25 +1,32 @@
 package Vistas;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
+import java.awt.CardLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+
+import Modelo.ModeloCadete;
 
 public class Principal extends JPanel {
 	private JTextField nombreField;
 	private JTextField apellidoField;
-	private JTextField segundoApellField;
+	private JTextField edadField;
 	private JTextField nacionalidadField;
 	private JTextField IdField;
+	private Ventana ventana;
+	
+	ModeloCadete mc;
 
 	/**
 	 * Create the panel.
 	 */
-	public Principal() {
+	public Principal(Ventana v) {
 
 		setBounds(100, 100, 450, 450);
 		setLayout(null);
@@ -28,6 +35,8 @@ public class Principal extends JPanel {
 		etiquetas();
 		botones();
 		camposTexto();
+		this.ventana= v;
+		mc=new ModeloCadete();
 		
 		
 	}
@@ -80,12 +89,12 @@ public class Principal extends JPanel {
 			
 			
 			
-			segundoApellField = new JTextField();
-			segundoApellField.setText("Edad");
-			segundoApellField.setEditable(false);
-			segundoApellField.setBounds(252, 148, 86, 20);
-			add(segundoApellField);
-			segundoApellField.setColumns(10);
+			edadField = new JTextField();
+			edadField.setText("Edad");
+			edadField.setEditable(false);
+			edadField.setBounds(252, 148, 86, 20);
+			add(edadField);
+			edadField.setColumns(10);
 			
 			
 			
@@ -110,10 +119,19 @@ public class Principal extends JPanel {
 		    JButton btnSiguiente = new JButton("Siguiente >>");
 		    btnSiguiente.addActionListener(new ActionListener() {
 		    	public void actionPerformed(ActionEvent arg0) {
-		    		
+		    		CardLayout layout = (CardLayout) ventana.getContentPane().getLayout();
+		    		layout.show(ventana.getContentPane(), "Secundario");
 		    	}
 		    });
 			btnSiguiente.setBounds(318, 357, 122, 23);
 			add(btnSiguiente); 
 	 }
+	 
+	// private void volcadoDatos(){
+		//    nombreField.setText(delincuenteSeleccionado.getNombre());
+		  //  apellidoField.setText(String.valueOf(delincuenteSeleccionado.getEdad()));
+		    //edadField.setText(delincuenteSeleccionado.getSexo());
+		    //nacionalidadField.setText(delincuenteSeleccionado.getNacionalidad());
+		   // IdField.setText(.getDireccion());
+		//}
 }

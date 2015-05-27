@@ -1,7 +1,10 @@
 package Modelo;
-import java.sql.DriverManager;
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import com.mysql.jdbc.Statement;
 
 
 
@@ -79,5 +82,46 @@ public class ConexionDB {
 		return conexion;
 	}
 
+	public ResultSet query(String query){
+		
+		Statement st;
+		ResultSet rs = null;
+
+		try {
+			st = (Statement) conexion.createStatement();
+			try{
+				rs = st.executeQuery(query);
+			}
+			catch (SQLException e){
+				e.printStackTrace();
+			}
+		
+		}
+		catch (SQLException e1) {
+				// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}	
+		return rs;	
+										
+	}
+	
+	//Con este metodo vamos a hacer los inserts, update y deletes.
+	public int modifyQuery(String update){
+		Statement stmt;
+		int rs = 0;
+		try{
+		stmt = (Statement) conexion.createStatement();		
+			try{
+				rs = stmt.executeUpdate(update);
+			}
+			catch (SQLException e){
+				
+			}
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		return rs;
+	}
 }
 

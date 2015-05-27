@@ -23,7 +23,7 @@ public class Ventana extends JFrame {
 	
 		//Declaramos los paneles
 		
-		principal=new Principal();
+		principal=new Principal(this);
 		secundario=new Secundario();
 		ultimo=new Ultimo();
 		

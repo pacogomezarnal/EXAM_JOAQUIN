@@ -4,12 +4,16 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Secundario extends JPanel {
 	private JTextField txtNombre;
 	private JTextField txtApellido;
 	private JTextField txtApellido_1;
 	private JTextField txtNacionalidad;
+	private JTextField txtId;
 
 	/**
 	 * Create the panel.
@@ -73,6 +77,33 @@ public class Secundario extends JPanel {
 		txtNacionalidad.setBounds(191, 297, 86, 20);
 		add(txtNacionalidad);
 		txtNacionalidad.setColumns(10);
+		
+		JLabel lblId = new JLabel("Id");
+		lblId.setBounds(339, 49, 46, 14);
+		add(lblId);
+		
+		txtId = new JTextField();
+		txtId.setEditable(false);
+		txtId.setText("Id");
+		txtId.setBounds(339, 74, 86, 20);
+		add(txtId);
+		txtId.setColumns(10);
+		
+		JButton btnAtrs = new JButton("<< Atr\u00E1s");
+		btnAtrs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnAtrs.setBounds(31, 380, 93, 23);
+		add(btnAtrs);
+		
+		JButton btnSiguiente = new JButton("Siguiente >>");
+		btnSiguiente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnSiguiente.setBounds(319, 380, 106, 23);
+		add(btnSiguiente);
 		
 	}
 }
