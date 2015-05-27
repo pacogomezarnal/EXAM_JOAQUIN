@@ -18,7 +18,7 @@ public class Ventana extends JFrame {
 	public Ventana() {
 		setTitle("The Laby");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 450);
+		setBounds(100, 100, 500, 450);
 		getContentPane().setLayout(new CardLayout(0, 0));
 	
 		//Declaramos los paneles
@@ -26,6 +26,13 @@ public class Ventana extends JFrame {
 		principal=new Principal();
 		secundario=new Secundario();
 		ultimo=new Ultimo();
+		
+		//Añadimos los paneles
+		
+		this.getContentPane().add("Principal", principal);
+		this.getContentPane().add("Secundario", secundario);
+		this.getContentPane().add("Ultimo", ultimo);
+
 	}
 
 }
