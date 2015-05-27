@@ -16,16 +16,17 @@ public class Ventana extends JFrame {
 
 
 	public Ventana() {
+		//Seteamos el JFrame
 		setTitle("The Laby");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 450);
 		getContentPane().setLayout(new CardLayout(0, 0));
 	
-		//Declaramos los paneles
+		//Declaramos los paneles que contendrá
 		
 		principal=new Principal(this);
-		secundario=new Secundario();
-		ultimo=new Ultimo();
+		secundario=new Secundario(this);
+		ultimo=new Ultimo(this);
 		
 		//Añadimos los paneles
 		

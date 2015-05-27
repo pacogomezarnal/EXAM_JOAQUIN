@@ -5,6 +5,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.mysql.jdbc.Statement;
+ 
+
+//NO HE USADO LA CLASE CONEXIONDB PORQUE HE USADO LA MIA PROPIA PORQUE ME DABA PROBLEMAS PERO CREO HABER ENCONTRADO LOS ERRORES
 
 
 

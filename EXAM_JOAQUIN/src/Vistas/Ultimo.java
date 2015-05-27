@@ -1,22 +1,44 @@
 package Vistas;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
+import java.awt.CardLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import Modelo.IngresoLaby;
+import Modelo.ModeloCadete;
 
 public class Ultimo extends JPanel {
 	private JTextField txtId;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField inputComprobar;
+	private JTextField apellidoUno;
+	private ModeloCadete mc;
+	private JButton btnComprobar;
+	
+	private Ventana ventana;
+	private IngresoLaby iL;
 
 	/**
 	 * Create the panel.
 	 */
-	public Ultimo() {
+	public Ultimo(Ventana v) {
+		//SETEAMOS EL PANEL
 		setBounds(100, 100, 450, 450);
 		setLayout(null);
+		this.ventana=v;
 		
+		//AÑADIMOS METODO QUE IMPLEMENTA EL ASPECTO GRAFICO
+		etiquetasBotonesyDemas();
+	
+		
+	}
+	
+	//CREAMOS METODO QUE SETEA TODO EL ASPECTO GRAFICO
+	private void etiquetasBotonesyDemas(){
 		JLabel lblId = new JLabel("Id");
 		lblId.setBounds(52, 42, 46, 14);
 		add(lblId);
@@ -26,29 +48,46 @@ public class Ultimo extends JPanel {
 		txtId.setBounds(52, 67, 86, 20);
 		add(txtId);
 		txtId.setColumns(10);
+		//txtId.setText(String.valueOf(mc.load().get(0).getId()));
 		
 		JLabel lblerApellido = new JLabel("1er Apellido");
 		lblerApellido.setBounds(183, 42, 74, 14);
 		add(lblerApellido);
 		
-		textField = new JTextField();
-		textField.setBounds(183, 67, 114, 20);
-		add(textField);
-		textField.setColumns(10);
+		apellidoUno = new JTextField();
+		apellidoUno.setBounds(183, 67, 114, 20);
+		add(apellidoUno);
+		apellidoUno.setColumns(10);
+		//apellidoUno.setText(mc.load().get(0).getApellidos());
 		
-		JButton btnComprobar = new JButton("COMPROBAR");
+		
+		btnComprobar = new JButton("COMPROBAR");
+		btnComprobar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+		//		iL.getCod(, apellidoUno.getText());
+			}
+		});
 		btnComprobar.setBounds(52, 124, 363, 23);
 		add(btnComprobar);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(52, 176, 363, 33);
-		add(textField_1);
-		textField_1.setColumns(10);
+		inputComprobar = new JTextField();
+		inputComprobar.setBounds(52, 176, 363, 33);
+		add(inputComprobar);
+		inputComprobar.setColumns(10);
 		
-		JButton button = new JButton("<< Atr\u00E1s");
-		button.setBounds(30, 392, 89, 23);
-		add(button);
 		
+		JButton atras = new JButton("<< Atras");
+		atras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//IMPLEMENTAMOS EL CARDLAYOUT PARA PODER CAMBIAR DE PANEL AL DARLE AL BOTON ATRAS
+
+				CardLayout layout = (CardLayout) ventana.getContentPane().getLayout();
+	    		layout.show(ventana.getContentPane(), "Secundario");
+
+			}
+		});
+		atras.setBounds(31, 375, 89, 23);
+		add(atras);
 	}
 
 }

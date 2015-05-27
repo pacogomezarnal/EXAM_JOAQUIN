@@ -78,4 +78,8 @@ public class Cadete {
 		this.equipo = equipo;
 	}
 
+	public String toArray(){
+		return nombre;
+		
+	}
 }

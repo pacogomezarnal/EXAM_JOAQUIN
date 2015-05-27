@@ -27,20 +27,24 @@ public class Principal extends JPanel {
 	 * Create the panel.
 	 */
 	public Principal(Ventana v) {
-
+		//SETEAMOS EL PANEL 
 		setBounds(100, 100, 450, 450);
 		setLayout(null);
-		
-		
+		this.ventana= v;
+		mc=new ModeloCadete();
+
+		//AÑADIMOS LOS METODOS NECESARIOS PARA IMPLEMENTAR TODO EL ASPECTO GRAFICO DE LA VENTANA
 		etiquetas();
 		botones();
 		camposTexto();
-		this.ventana= v;
-		mc=new ModeloCadete();
+		
+		//AÑADIMOS EL METODO QUE VUELCA LOS DATOS EN LOS CAMPOS DE TEXTO
+		volcadoDatos();
 		
 		
 	}
-	 public void etiquetas(){
+	 //CREAMOS METODOS PARA IMPLEMENTAR EL ASPECTO GRAFICO DE MANERA MAS ORDENADA
+	public void etiquetas(){
 		    
 		 JLabel label = new JLabel("");
 			label.setIcon(new ImageIcon("C:\\Users\\dai\\Desktop\\usuario.png"));
@@ -83,7 +87,7 @@ public class Principal extends JPanel {
 			apellidoField = new JTextField();
 			apellidoField.setText("Apellidos");
 			apellidoField.setEditable(false);
-			apellidoField.setBounds(252, 92, 86, 20);
+			apellidoField.setBounds(252, 92, 151, 20);
 			add(apellidoField);
 			apellidoField.setColumns(10);
 			
@@ -119,6 +123,8 @@ public class Principal extends JPanel {
 		    JButton btnSiguiente = new JButton("Siguiente >>");
 		    btnSiguiente.addActionListener(new ActionListener() {
 		    	public void actionPerformed(ActionEvent arg0) {
+					//IMPLEMENTAMOS EL CARDLAYOUT PARA PODER CAMBIAR DE PANEL AL DARLE AL BOTON SIGUIENTE
+
 		    		CardLayout layout = (CardLayout) ventana.getContentPane().getLayout();
 		    		layout.show(ventana.getContentPane(), "Secundario");
 		    	}
@@ -127,11 +133,13 @@ public class Principal extends JPanel {
 			add(btnSiguiente); 
 	 }
 	 
-	// private void volcadoDatos(){
-		//    nombreField.setText(delincuenteSeleccionado.getNombre());
-		  //  apellidoField.setText(String.valueOf(delincuenteSeleccionado.getEdad()));
-		    //edadField.setText(delincuenteSeleccionado.getSexo());
-		    //nacionalidadField.setText(delincuenteSeleccionado.getNacionalidad());
-		   // IdField.setText(.getDireccion());
-		//}
+	 //CREAMOS EL METODO PARA VOLCAR LOS DATOS EN LOS CAMPOS DE TEXTO. 
+	 private void volcadoDatos(){
+		    nombreField.setText(mc.load().get(0).getNombre());
+		    apellidoField.setText(mc.load().get(0).getApellidos());
+		    edadField.setText(String.valueOf(mc.load().get(0).getEdad()));
+		    nacionalidadField.setText(mc.load().get(0).getNacionalidad());
+		    IdField.setText(String.valueOf(mc.load().get(0).getId()));
+		  
+		}
 }
